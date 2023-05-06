@@ -1,0 +1,28 @@
+<%- include('./partials/header.ejs')%>
+<h2 id="profile-welcome">Welcome, <%= user.firstName + " " + user.lastName%></h2>
+<%if(connections.length){%>
+    <p id="profile-text">You have created the following connections</p>
+    <%connections.forEach(connection => {%>
+        <ul id="connectionList">
+        <a id="profile-connections" href = '/connections/<%= connection.id%>'><li id="createdConnections"><%= connection.name%></li></a>
+        </ul>
+    <%});
+} else{%>
+    <p>You have not created any connections</p>
+<%}%>
+
+<!-- Render the connections that the user has rsvp'd to -->
+<% rsvps.forEach(rsvp => {                                                                    <!-- For each rsvp in the database-->
+    connections.forEach(connection =>{                                                        <!-- And for each connection in the database -->
+        if((connection.id == rsvp.connectionName) && (req.session.user == rsvp.userName)){%>  
+            <ul id="connectionList">
+                <a id="profile-connections" href='/connections/<%= connection.id%>'><li id="createdConnections"><%= connection.name%></li></a>
+            </ul>
+        <%}
+    });
+    
+});%>
+
+</body>
+
+<%- include('./partials/footer.ejs')%>
