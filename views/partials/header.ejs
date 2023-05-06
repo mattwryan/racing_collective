@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' href="/styles/default.css">
+</head>
+
+<body id="page-container">
+    <header>
+        <div id="nav-div">
+            <nav>
+                <a href="/" id="home-link">
+                <img id="red-car-image" src="/images/offroad-vehicle.jpg" alt="Offroad Vehicle">
+            </a>
+            <h1 id="brand-info">Offroad Racing Collective</h1>
+
+            <div id="user-navigation">
+                <a href="/connections/new">
+                <h1>Start New Connection | </h1>
+            </a>
+            <%if(!user){%>
+                <a href="/login">
+                    <h1> Login |</h1>
+                </a>
+                <a href="/new">
+                    <h1> Sign Up |</h1>
+                </a>
+            <%} else {%>
+                <a href="/profile">
+                    <h1> Profile |</h1>
+                </a>
+                <a href="/logout">
+                    <h1> Logout</h1>
+                </a>
+            <%}%>
+            </div>
+            </nav>    
+        </div>
+        <div id="general-navigation">
+            <nav>
+                <a href="/connections">
+                    <h1 id="connections-link">Connections</h1>
+                </a>
+            </nav>
+        </div>
+    
+    </header>
+
+    <%if(errorMessages.length > 0){
+        errorMessages.forEach(message=>{%>
+            <div class="error"><%=message%></div>
+       <% });
+    }%>
+
+    <%if(successMessages.length > 0){
+        successMessages.forEach(message=>{%>
+            <div class="success"><%=message%></div>
+       <% });
+    }%>

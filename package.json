@@ -1,0 +1,33 @@
+{
+  "name": "itis4166",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mryan93/itis4166.git"
+  },
+  "author": "Matthew Wieser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mryan93/itis4166/issues"
+  },
+  "homepage": "https://github.com/mryan93/itis4166#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "luxon": "^2.3.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.2.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  }
+}

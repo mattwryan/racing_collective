@@ -1,0 +1,40 @@
+<%- include('./partials/header.ejs')%>
+    <div id="connection-detail-div">
+        <h1 id="event-name"><%= connection.name%>, <%= connection.location%>, <%= connection.date%>, <%= connection.startTime%> to <%= connection.endTime%></h1>
+        <h2 id="event-name"><%= connection.rsvpNum%> people have rsvp'd to this event</h2>
+        <%if(user == connection.hostName._id){%>
+            <form>
+                <button type="submit" formmethod="POST" id="delete-button" formaction="/connections/<%= connection.id%>?_method=DELETE">Delete</button>
+                <button type="submit" formmethod="GET" formaction="/connections/<%= connection.id%>/edit" id="update-button">Update</button>
+            </form>
+        <%} else{%> 
+            <h2 id="event-name">Rsvp to attend!</h2>
+        <form action="/connections/<%= connection.id%>/rsvp" method="post">
+            <button type="submit" id="delete-button" value="Yes" name="response">Yes</button>
+            <button type="submit" id="update-button" value="No" name="response">No</button>
+            <button type="submit" id="update-button" value="Maybe" name="response">Maybe</button>
+        </form>
+        <%}%>
+        <a href="connections.html">
+            <img src="<%= connection.image%>" alt="A Yellow Jeep" id="jeep-img">
+        </a>
+        <h2 id="detail-paragraph">
+            Hosted by <%= connection.hostName.firstName + ' ' + connection.hostName.lastName%>
+        </h2>
+        <h3 id="date">
+            <%= connection.date%>
+        </h3>
+        <h3 id="time">
+            <%= connection.startTime%> to <%= connection.endTime%>
+        </h3>
+        <h3 id="location">
+            <%= connection.location%>
+        </h3>
+        <h1 id="details">
+            Details
+        </h1>
+        <h3 id="details-paragraph">
+            <%= connection.details%>
+        </h3>
+    </div>
+<%- include('./partials/footer.ejs')%>
