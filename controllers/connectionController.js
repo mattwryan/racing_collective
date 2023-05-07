@@ -129,8 +129,14 @@ exports.newRsvp = (req, res, next) =>{
     })
     .catch(err=>next(err));
 
+
     //Possible way to update response value?
     //model.findByIdAndUpdate(id, {rsvpResponse: req.body.response})
+
+    // If the response is 'Yes' but a user has already rsvp'd for this connection, ignore
+    // Else if the response is 'Yes' and the user has NOT rsvp'd, proceed
+    // Else if the response is 'No' or 'Maybe' but a user has NOT rsvp'd yet, ignore
+    // Else if the response is 'No' or 'Maybe' and the user HAS rsvp'd, proceed
 
 
     if(req.body.response == "Yes"){ 

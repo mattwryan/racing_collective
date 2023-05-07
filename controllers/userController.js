@@ -17,11 +17,12 @@ exports.profile = (req, res, next)=>{
         return res.redirect('./login');
     } else{
     let id = req.session.user;
-    Promise.all([model.findById(id), Connection.find({hostName: id}), Rsvp.find({userName: id})])           // Note: This is where rsvps is defined
-    .then(results=>{                                                                                        // Fixing this section will likely fix the profile page
-        const [user, connections, rsvps] = results;
-        res.render('./profile', {user, connections, rsvps});
-    })
+    // The answer may be here. Try modifying this to find a connection that matches the rsvp connectionName
+    Promise.all([model.findById(id), Connection.find({hostName: id}), Rsvp.find({userName: id}), Connection.find()])           
+    .then(results=>{                                                                                                           
+        const [user, connections, rsvps, allConnections] = results;                                                            
+        res.render('./profile', {user, connections, rsvps, allConnections});                                       
+    })                                                                                                                         
     .catch(err=>next(err));
 }
 };

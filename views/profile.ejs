@@ -13,14 +13,17 @@
 
 <!-- Render the connections that the user has rsvp'd to -->
 <% rsvps.forEach(rsvp => {                                                                    <!-- For each rsvp in the database-->
-    connections.forEach(connection =>{                                                        <!-- And for each connection in the database -->
-        if((connection.id == rsvp.connectionName) && (req.session.user == rsvp.userName)){%>  
+    allConnections.forEach(connection =>{                                                      <!-- And for each connection in the database -->
+        if(rsvp.connectionName == connection.id){%>
+            <h1>Hello, Friend</h1>
             <ul id="connectionList">
-                <a id="profile-connections" href='/connections/<%= connection.id%>'><li id="createdConnections"><%= connection.name%></li></a>
+                <a id="profile-connections" href='/connections/<%= connection.id%>'><li id="createdConnections"><%= connection.name + " " + connection.date%></li></a>
             </ul>
         <%}
+        else{%>
+            <h1>Hello, Friend</h1>
+        <%}
     });
-    
 });%>
 
 </body>
